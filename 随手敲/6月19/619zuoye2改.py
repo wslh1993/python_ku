@@ -1,0 +1,6 @@
+print('===================')
+name=input('姓名:',)
+QQ=input('QQ:',)
+phone=input('手机号码:',)
+adrs=input('公司地址:',)
+print('===================')

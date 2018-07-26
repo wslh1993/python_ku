@@ -1,0 +1,14 @@
+print('请输入一个4位数：')
+temp=int(input())
+qianw=temp/1000
+baiw=temp/100
+shiw=temp/10
+qianwei=int(qianw)
+baiwei=int(baiw-qianwei*10)
+shiwei=int(shiw-qianwei*100-baiwei*10)
+gewei=int(temp-qianwei*1000-baiwei*100-shiwei*10)
+print('千位:',qianwei)
+print('百位:',baiwei)
+print('十位:',shiwei)
+print('个位:',gewei)
+input()
