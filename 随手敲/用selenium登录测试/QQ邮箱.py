@@ -1,10 +1,15 @@
+from selenium.webdriver import Remote
 import random
-from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+ttt={'platform':'ANY','browserName':'chrome','version':''}
+dr= Remote(command_executor='http://192.168.43.31:4444/wd/hub',
+           desired_capabilities=DesiredCapabilities.CHROME
+           )
+
 from time import sleep
 def Unicode():
     val = random.randint(0x4e00, 0x9fbf)
     return chr(val)
-dr=webdriver.Chrome()
 dr.get("https://mail.qq.com")
 sleep(2)
 #进入frame框架内部
@@ -20,6 +25,7 @@ dr.find_element_by_xpath("//*[@id='p']").send_keys("liuhe.1015")
 sleep(1)
 #通过xpath用class去定位登录按钮
 dr.find_element_by_xpath("//*[@id='login_button']").click()
+
 sleep(3)
 while True:
     s=''
@@ -46,10 +52,12 @@ while True:
     dr.switch_to_frame(a)
     dr.find_element_by_xpath('/html/body').send_keys(m)
     dr.switch_to.parent_frame()
+    dr.get_screenshot_as_file("D:\\kk.png")
+    break
     #dr.switch_to.default_content()#
     #dr.switch_to_frame('mainFrame')
     dr.find_element_by_xpath('//*[@id="toolbar"]/div/a[1]').click()
     dr.switch_to.default_content()
     sleep(2)
-
+dr.quit()
 
