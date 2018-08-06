@@ -1,0 +1,40 @@
+1. 安装mongodb
+2. 配置环境变量
+3. 启动mongodb数据库服务：mongod --dbpath 数据存放的目录（自己指定）
+4. 打开命令行工具：mongo
+
+db 查看当前数据库
+use 数据库名    切换数据库
+show databases  查看有哪些数据库
+show collections (tables) 查看当前数据库有哪些集合
+db.集合名.help() 查看关于集合操作的所有函数方法
+
+添加数据
+db.集合名.insert(数据对象)
+db.集合名.insertOne(数据对象) 添加一个数据
+db.集合名.insertMany([数据对象...]) 添加一组数据
+说明：如果指定的集合名不存在，则先创建集合，然后给该集合添加数据
+
+查询数据
+db.集合名.find(条件) 查询多条数据
+db.集合名.findOne(条件) 只查询一条数据
+db.集合名.count(条件) 统计文档个数
+db.集合名.find(条件).count()
+db.集合名.find(条件).limit(n) 从结果中取前面n个文档
+db.集合名.find(条件).skip(n) 从结果中跳过n个文档
+db.集合名.findOneAndReplace( 条件, 替换文档 ) 用指定文档替换查询到的文档
+db.集合名.findOneAndUpdate( 条件, 新文档 ) 用指定文档更新查询到的文档
+
+条件的基本写法是：指定一个对象
+
+更新数据
+db.集合名.update(条件，新文档) 用新文档替换指定条件过滤的文档
+db.集合名.updateOne(条件，新文档)
+db.集合名.updateMany(条件，新文档)
+db.集合名.save(obj)
+
+删除数据
+db.集合名.remove(条件)
+db.集合名.deleteOne(条件) 删除一个，即使条件匹配到多个，也只删除第一个
+db.集合名.deleteMany(条件) 删除多个
+db.集合名.drop() 删除整个集合（相当于删除整个集合的数据）
